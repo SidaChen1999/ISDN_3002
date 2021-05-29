@@ -1,0 +1,6 @@
+{
+    "port": "COM6",
+    "board": "arduino:samd:nano_33_iot",
+    "programmer": "arduino:atmel_ice",
+    "sketch": "v1\\v1.ino"
+}
