@@ -5,7 +5,6 @@ import io
 import struct
 
 import libtrolley
-import typing
 
 request_search = {
     "morpheus": "Follow the white rabbit. \U0001f430",
