@@ -138,7 +138,7 @@ class Trolley:
         # self.ID = 1
         if mode == 'ITSC':
             if self.ID == 0: # open case
-                A = -35
+                A = -35 
                 n = 2.5
             else: # with case
                 A = -32 

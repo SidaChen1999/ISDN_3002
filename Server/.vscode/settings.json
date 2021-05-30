@@ -1,4 +1,0 @@
-{
-    "python.pythonPath": "E:\\anaconda\\python.exe",
-    "python.analysis.extraPaths": ["Server", "another/path/etc"]
-}
