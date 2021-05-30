@@ -24,7 +24,8 @@ BeaconXs_TPlink = [4.08, 10.78, 10.78, 4.08, 18.62, 18.62]
 BeaconYs_TPlink = [3.69, 11.31, 3.69, 11.31, 11.31, 3.69]
 BeaconXs_ITSC = [17.68, 18.57, 9.75, 8.72, 4.61]
 BeaconYs_ITSC = [9.85, 2.17, 5.00, 9.85, 5.08]
-mode = 'MIX'
+samples = 5
+mode = 'ITSC'
 if mode == 'TPlink':
     Beacons = Beacons_TPlink
     BeaconXs = BeaconXs_TPlink
@@ -39,12 +40,12 @@ else:
     BeaconYs = BeaconYs_TPlink + BeaconYs_ITSC
 numWifi = len(Beacons)
 
-img = cv.imread('J:\GoogleDrive\HKUST\ISDN 3002\Floor_Plan_No_Grid.JPG')
+img = cv.imread('J:\GoogleDrive\HKUST\ISDN 3002\Floor_Plan.JPG')
 scale_percent = 80 # percent of original size
 width = int(img.shape[1] * scale_percent / 100)
 height = int(img.shape[0] * scale_percent / 100)
 dim = (width, height)
-img = cv.resize(img, dim)
+# img = cv.resize(img, dim)
 loc2pixel_x = img.shape[1] / 22.35
 loc2pixel_y = img.shape[0] / 14.9
 for i in range(0, numWifi):
@@ -91,7 +92,8 @@ try:
                         trolleylist,
                         BeaconXs,
                         BeaconYs,
-                        Beacons
+                        Beacons,
+                        samples
                         )
                     
                 except Exception as e:

@@ -261,7 +261,7 @@ class Message:
                 break
         return flag
 
-    def process_data(self, trolleylist: 'list[libtrolley.Trolley]', BeaconXs, BeaconYs, Beacons):
+    def process_data(self, trolleylist: 'list[libtrolley.Trolley]', BeaconXs, BeaconYs, Beacons, samples):
         length = len(self._recv_buffer)
         info = self._recv_buffer
         self._recv_buffer = self._recv_buffer[length:]
@@ -277,7 +277,6 @@ class Message:
             if id == -1:
                 id = len(trolleylist)
                 trolleylist.append(libtrolley.Trolley(myMac, id, BeaconXs, BeaconYs, Beacons))
-            samples = 3
             trolleylist[id].update(info, wifis, BeaconXs, BeaconYs, Beacons, samples)
             if trolleylist[id].loopCount >= samples:
                 trolleylist[id].locate()

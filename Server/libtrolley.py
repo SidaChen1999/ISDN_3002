@@ -1,14 +1,6 @@
-from operator import truediv
-import sys
-import selectors
-import json
-import io
-import struct
 import numpy as np
 import math
-from numpy.testing._private.utils import tempdir
 from scipy import optimize
-import cv2 as cv
 from itertools import combinations 
 
 
@@ -44,7 +36,6 @@ class Trolley:
         self.realY = -1
         self.reliability = 0
         
-
     def update(self, list, wifis, Xs, Ys, Beacons, samples):
         sensed = 0
         self.sensedBeacons[:] = []
@@ -141,16 +132,25 @@ class Trolley:
         print("\nReal Location: ", (self.realX, self.realY))
 
     def dbm2m(self, dBm, mode):
-        A = -30
-        n = 2.5
+        A = -28
+        n = 2.5 
         z = 3.4 - self.z
+        # self.ID = 1
         if mode == 'ITSC':
-            A = -34 # -34
-            # n = 3.0
+            if self.ID == 0: # open case
+                A = -35
+                n = 2.5
+            else: # with case
+                A = -32 
+                n = 3 
             z = 3.1 - self.z
         elif mode == 'TPlink':
-            A = -27 # -27
-            # n = 3.0
+            if self.ID == 0: # open case
+                A = -26
+                n = 2.5
+            else: # with case
+                A = -24.5 
+                n = 3 
             z = 3.4 - self.z
         MHz = 2417 
         FSPL = 27.55
@@ -239,7 +239,7 @@ class Trolley:
                 y = 14.9
                 continue
             
-            map[int(y // 2)][int(x // 2)] += 1 # ...
+            map[int(y // 2)][int(x // 2)] += 1
             self.x.append(x)
             self.y.append(y)
         
@@ -269,8 +269,6 @@ class Trolley:
             self.reliability = 99
         self.reliability = int(self.reliability)
         return
-        
-        
             
     def only1(self, mac):
         print('Distance measuring: ', end ='')
