@@ -135,7 +135,6 @@ class Trolley:
         A = -28
         n = 2.5 
         z = 3.4 - self.z
-        # self.ID = 1
         if mode == 'ITSC':
             if self.ID == 0: # open case
                 A = -35 
@@ -154,11 +153,8 @@ class Trolley:
             z = 3.4 - self.z
         MHz = 2417 
         FSPL = 27.55
-        # Free-Space Path Loss adapted avarage constant for home WiFI routers and following units
         m = 10 ** ((A + dBm) / (10 * n))
         # m = 10 ** (( FSPL - (20 * math.log10(MHz)) + dBm ) / 20 )
-        # print('m^2: ', m ** 2)
-        # print('z^2: ', self.z ** 2)
         if m < z:
             m = 0
         else:

@@ -24,8 +24,8 @@ BeaconXs_TPlink = [4.08, 10.78, 10.78, 4.08, 18.62, 18.62]
 BeaconYs_TPlink = [3.69, 11.31, 3.69, 11.31, 11.31, 3.69]
 BeaconXs_ITSC = [17.68, 18.57, 9.75, 8.72, 4.61]
 BeaconYs_ITSC = [9.85, 2.17, 5.00, 9.85, 5.08]
-samples = 5
-mode = 'ITSC'
+samples = 3
+mode = 'MIX'
 if mode == 'TPlink':
     Beacons = Beacons_TPlink
     BeaconXs = BeaconXs_TPlink
